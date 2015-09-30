@@ -10,34 +10,6 @@ RUN mkdir /docker-entrypoint-initdb.d
 ENV MARIADB_MAJOR 10.0
 ENV MARIADB_VERSION 10.0.21+maria-1~jessie
 
-# install mariadb and all dependencies
-
-#RUN apt-get update
-#RUN apt-get install -y mariadb-server-10.0
-
-#RUN apt-get update && apt-get install \
-#  && libdbi-perl \
-#  && adduser \
-#  && debconf \
-#  && mariadb-common \
-#  && debconf \
-#  && libaio1 \
-#  && libc6 \
-#  && libc6 \
-#  && libdbi-perl \
-#  && libpam0g \
-#  && libstdc++6 \
-#  && lsb-base \
-#  && mariadb-client-10.0 \
-#  && mariadb-client-10.0 \
-#  && mariadb-server-core-10.0 \
-#  && mariadb-server-core-10.0 \
-#  && passwd \
-#  && perl \
-#  && psmisc \
-#  && zlib1g 
-
- 
 # add repository pinning to make sure dependencies from this MariaDB repo are preferred over Debian dependencies
 #  libmariadbclient18 : Depends: libmysqlclient18 (= 5.5.42+maria-1~wheezy) but 5.5.43-0+deb7u1 is to be installed
 
@@ -50,8 +22,6 @@ RUN { \
 	&& apt-get update \
 	&& apt-get install -y \
 		mariadb-server-$MARIADB_MAJOR \
-    make \
-    g++ \
 	&& rm -rf /var/lib/apt/lists/* \
 	&& rm -rf /var/lib/mysql \
 	&& mkdir /var/lib/mysql
